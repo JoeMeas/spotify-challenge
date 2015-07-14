@@ -1,0 +1,15 @@
+body{
+	margin-left: 75px;
+	margin-right: 75px;
+	padding-bottom: 75px;
+}
+
+#description{
+	font-weight: 'bold';
+	font-size: 18px;
+}
+
+#title{
+	background-color: #6495ED;
+	color: white;
+}

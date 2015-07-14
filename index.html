@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="https://code.jquery.com/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+		<script src="js/main.js"></script>
+
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="css/main.css" type="text/css" />
+	</head>
+
+	<body>
+		<div id="title" class="col-xs-12">
+			<h1>Genre Explorer</h1>
+		</div>
+		<div id="description">
+			<p>Search for different genres of music and listen to popular tracks.</p>
+		</div>
+		<div ng-app="myApp" ng-controller="myCtrl">
+		    <form name="songForm">
+			    <div class="form-group">
+			        <label>Genre search:</label>
+			        <input name="search" ng-minlength=3 placeholder="Enter your search.." class="form-control" ng-model="albums" required></input>
+			    	<p class="help-block" ng-show="songForm.search.$error.minlength">Enter 3+ characters</p>
+			    </div>
+
+			    <div class="form-group">
+			    	<button ng-disabled="songForm.search.$invalid" class="btn btn-primary" ng-click="getData()" type="submit">Submit</button>
+			    </div>
+		    </form>
+
+			<svg id="my-svg" style="width:800;height:300"></svg>
+
+			<ul>
+				<li ng-repeat="tracks in data">
+					<a ng-class="tracks.preview_url == currentSong ? 'playing' : ''" ng-click="play(tracks.preview_url)">
+						{{ tracks['name'] + ', ' + tracks['artists'][0]['name']}}
+					</a>
+				</li>
+			</ul>
+
+		 <div>
+	</body>
+</html>
